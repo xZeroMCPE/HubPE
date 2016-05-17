@@ -26,3 +26,31 @@ class Core extends PluginBase implements Listener {
             $this->config = new Config($this->getDataFolder()) . "config.yml"), Config::YAML));
             $this->getLogger()->info("HubPE has been enabled!");
      }
+     public function onBlockBreak(BlockBreakEvent $event){
+      
+        $player = $event->getPlayer();
+          if(!$player->hasPermission("HubPE.break")){
+            $event->setCancelled();
+           $player->sendPopup("You are not allowed to break blocks here.")
+          }
+               }
+     public function onBlockPlace(BlockPlaceEvent $event){
+      
+        $player = $event->getPlayer();
+          if(!$player->hasPermission("HubPE.place")){
+            $event->setCancelled();
+           $player->sendPopup("You are not allowed to place blocks here.")
+               }
+       }
+     public function onKick(PlayerKickEvent $event){
+             if($event->getReason() === "disconnectionScreen.serverFull"){
+                 if($event->getPlayer()->hasPermission("HubPE.full")){
+                 $event->setCancelled(true);
+                 }
+             }
+     }
+     public function onJoin(PlayerJoinEvent $e){
+            $player = $e->getPlayer();
+            $Join_Message = this->congih-.get("Join_Message");
+            $player->sendMessage("$Join_Message");
+     }
