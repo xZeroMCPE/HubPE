@@ -31,7 +31,8 @@ Disable_Commands_Message: You are not allowed to use that commands.
 #----=
 
 Gadgets:
- id: 46
-  slot: 1
-  message: You have enabled explosion particle
-   command: 
+ name: TNT
+  id: 46
+   slot: 1
+    message: You have enabled gadget {Gadget}
+    command: 
