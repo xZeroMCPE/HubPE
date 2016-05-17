@@ -7,25 +7,25 @@ HubPE is the best Hub plugin available for MCPE Servers (Pocketmins,ImagicalMine
 
 #Features:
 
-Blocks Join/Quit messages , (And customized it)
-VoidTp(When you fall in void it teleports you to the spawn)
-Blocks breaking and placing blocks
-Blocks item drop and pickup without permissions
-Blocks Rain
-LaunchPads(force editable in the config, use a block of emerald under the stone presure plate)
-Blocks hunger bar change
-Visibility(Players can go invisible when given the permission) .
+- Blocks Join/Quit messages , (And customized it)
+- VoidTp(When you fall in void it teleports you to the spawn)
+- Blocks breaking and placing blocks
+- Blocks item drop and pickup without permissions
+- Blocks Rain
+- LaunchPads(force editable in the config, use a block of emerald under the stone presure plate)
+- Blocks hunger bar change
+- Visibility(Players can go invisible when given the permission) .
 
 #Commands:
 
-/HubPE setlobby (Sets the main world spawn (lobby)
-/lobby  (teleports you to the lobby spawn)
-/HubPE (shows a list of HubPE commands)
+- /HubPE setlobby (Sets the main world spawn (lobby)
+- /lobby  (teleports you to the lobby spawn)
+- /HubPE (shows a list of HubPE commands)
 
 #Permissions:
-HubPE.break
-HubPE.place
-HubPE.fly
-HubPE.vanish
-HubPE.drop
-HubPE.pickup
+- HubPE.break
+- HubPE.place
+- HubPE.fly
+- HubPE.vanish
+- HubPE.drop
+- HubPE.pickup
