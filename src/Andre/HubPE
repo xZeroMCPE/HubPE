@@ -1,0 +1,28 @@
+<?php
+namespace Andre;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\Player;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\math\Vector3;
+use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
+use pocketmine\item\Item;
+use pocketmine\level\Position;
+use pocketmine\utils\Config;
+
+class Core extends PluginBase implements Listener {
+     public function onEnable(){
+            $this->getServer()->getPluginManager()->registerEvents($this,$this);
+            $this->saveDefaultConfig();
+            $this->reloadConfig();
+            $this->config = new Config($this->getDataFolder()) . "config.yml"), Config::YAML));
+            $this->getLogger()->info("HubPE has been enabled!");
+     }
