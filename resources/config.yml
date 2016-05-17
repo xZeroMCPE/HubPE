@@ -1,0 +1,37 @@
+# _   _       _    ______ _____ 
+#| | | |     | |   | ___ \  ___|
+#| |_| |_   _| |__ | |_/ / |__  
+#|  _  | | | | '_ \|  __/|  __| 
+#| | | | |_| | |_) | |   | |___ 
+#\_| |_/\__,_|_.__/\_|   \____/ 
+#A cool hub plugin (got almost everything a hub needs!)
+# Developed by: AndreTheGamer (Andre)
+
+#----=
+## Message that"ll be sent to te player after using a command when they don't have the permission.
+#----=
+
+No_Permission: You don't have that permission to use/do that.
+
+#----=
+## Server Full message. Only the ones with the right permission can join Full Servers!
+#----=
+
+Server_Full: This server is full!
+
+Disable_Commands:
+ - /version
+ - /plugins
+ 
+Disable_Commands_Message: You are not allowed to use that commands.
+
+
+#----=
+## Server gadgets! (The items will be added to there inventory onJoin). Currently in beta :)
+#----=
+
+Gadgets:
+ id: 46
+  slot: 1
+  message: You have enabled explosion particle
+   command: 
