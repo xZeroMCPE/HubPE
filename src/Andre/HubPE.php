@@ -56,3 +56,11 @@ class Core extends PluginBase implements Listener {
             $Join_Message = this->congih-.get("Join_Message");
             $player->sendMessage("$Join_Message");
      }
+     public function onChat(PlayerChatEvent $event)
+		{
+             $message = $event->getMessage();
+             $Disable_Commands = $config->get("Disable_Commands");
+             if($message == $Disable_Commands){
+                  $event->setCancelled();
+             }
+		}
