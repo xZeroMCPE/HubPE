@@ -12,19 +12,19 @@ use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\event\player\PlayerKickEvent;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\item\Item;
 use pocketmine\level\Position;
 use pocketmine\utils\Config;
 
-class Core extends PluginBase implements Listener {
+class HubPE extends PluginBase implements Listener {
      public function onEnable(){
             $this->getServer()->getPluginManager()->registerEvents($this,$this);
-            $this->saveDefaultConfig();
-            $this->reloadConfig();
-            $this->config = new Config($this->getDataFolder()) . "config.yml"), Config::YAML));
-            $this->broadcast = new Config($this->getDataFolder()) . "BroadcastMessage"), Config::YAML));
+            $this->config = (new Config($this->getDataFolder()."config.yml", Config::YAML))->getAll();
+			$this->broadcast = (new Config($this->getDataFolder()."BroadcastMessage.yml", Config::YAML))->getAll();
+       $this->saveDefaultConfig();;
             $this->getServer()->getScheduler()->scheduleRepeatingTask(new Events\broadcastMessage($this), 400);
             $this->getLogger()->info("HubPE has been enabled!");
      }
@@ -33,7 +33,7 @@ class Core extends PluginBase implements Listener {
         $player = $event->getPlayer();
           if(!$player->hasPermission("HubPE.break")){
             $event->setCancelled();
-           $player->sendPopup("You are not allowed to break blocks here.")
+           $player->sendPopup("You are not allowed to break blocks here.");
           }
                }
      public function onBlockPlace(BlockPlaceEvent $event){
@@ -41,7 +41,7 @@ class Core extends PluginBase implements Listener {
         $player = $event->getPlayer();
           if(!$player->hasPermission("HubPE.place")){
             $event->setCancelled();
-           $player->sendPopup("You are not allowed to place blocks here.")
+           $player->sendPopup("You are not allowed to place blocks here.");
                }
        }
      public function onKick(PlayerKickEvent $event){
@@ -53,37 +53,35 @@ class Core extends PluginBase implements Listener {
      }
      public function onJoin(PlayerJoinEvent $e){
             $player = $e->getPlayer();
-            $Join_Message = this->congih-.get("Join_Message");
+            $Join_Message = $this->getConfig()->get("Join_Message");
             $player->sendMessage("$Join_Message");
             $player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
      }
      public function onChat(PlayerChatEvent $event)
 		{
              $message = $event->getMessage();
-             $Disable_Commands = $config->get("Disable_Commands");
-             if($message == $Disable_Commands){
+             $Disable_Commands = $this->getConfig()->get("Disable_Commands");
+             if($message === $Disable_Commands){
                   $event->setCancelled();
              }
 		}
      public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
         switch ($command){
             case 'HubPE':
-		$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n
-                                    /lobby Teleports you to the lobby spawn\n
-                                    /HubPE - Shows a list of HubPE commands ");
-                                  if($args[1] == "setlobby"){
-                                  	if($event->getPlayer()->hasPermission("HubPE.setlobby")){
-                                  	$x = $sender->getX();
-		                	$y = $sender->gety();
-                                        $z = $sender->getZ();
-                                        $this->config->set("LobbyX", "$x");
-                                        $this->config->set("LobbyY", "$x");
-                                        $this->config->set("LobbyZ", "$x");
-                                  	$sender->sendMessage("Lobby spawn has been set to your position");
-                                  if($args[0] == "lobby"){
-                                  	$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
-                                  }
-                                  }
-                                
+		$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE - Shows a list of HubPE commands ");
+                             if($args[0] == "HubPE" && $args[1] == "setlobby"){
+                             $x = $sender->getX();
+		                	 $y = $sender->gety();
+                             $z = $sender->getZ();
+                             $this->config->set("LobbyX", "$x");
+                             $this->config->set("LobbyY", "$x");
+                             $this->config->set("LobbyZ", "$x");
+                             $sender->sendMessage("Lobby spawn has been set to your position");
+                              if($args[0] == "lobby"){
+                             	$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+							  }
+							 }
+							 }
+							 
 		}
-}
+	 }
