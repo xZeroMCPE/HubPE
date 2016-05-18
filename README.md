@@ -15,6 +15,7 @@ HubPE is the best Hub plugin available for MCPE Servers (Pocketmins,ImagicalMine
 - LaunchPads(force editable in the config, use a block of emerald under the stone presure plate)
 - Blocks hunger bar change
 - Visibility(Players can go invisible when given the permission) .
+- Automaticity broadcast message
 
 #Commands:
 
