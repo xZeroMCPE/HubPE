@@ -1,3 +1,4 @@
+---
 # _   _       _    ______ _____ 
 #| | | |     | |   | ___ \  ___|
 #| |_| |_   _| |__ | |_/ / |__  
@@ -35,10 +36,4 @@ Disable_Commands_Message: You are not allowed to use that commands.
 #----=
 ## Server gadgets! (The items will be added to there inventory onJoin). Currently in beta :)
 #----=
-
-Gadgets:
- name: TNT
-  id: 46
-   slot: 1
-    message: You have enabled gadget {Gadget}
-    command: 
+---
