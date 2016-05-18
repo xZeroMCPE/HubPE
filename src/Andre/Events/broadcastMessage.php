@@ -11,7 +11,7 @@ class Task extends PluginTask{
           $this->plugin = $owner;
      }
      public function onRun($currentTick){
-          $broadcast = $this->plugin->broadcast;
+          $broadcast = $this->plugin->this->broadcast;
           $message = $broadcast->get("Messages");
           $messages = $message[array_rand($message)];
           Server::getInstance()->broadcastMessage($messages);
