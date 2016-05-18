@@ -24,6 +24,7 @@ class Core extends PluginBase implements Listener {
             $this->saveDefaultConfig();
             $this->reloadConfig();
             $this->config = new Config($this->getDataFolder()) . "config.yml"), Config::YAML));
+            $this->getServer()->getScheduler()->scheduleRepeatingTask(new Events\broadcastMessage($this), 400);
             $this->getLogger()->info("HubPE has been enabled!");
      }
      public function onBlockBreak(BlockBreakEvent $event){
