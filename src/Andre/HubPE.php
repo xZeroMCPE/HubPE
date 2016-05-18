@@ -65,3 +65,25 @@ class Core extends PluginBase implements Listener {
                   $event->setCancelled();
              }
 		}
+     public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+        switch ($command){
+            case 'HubPE':
+		$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n
+                                    /lobby Teleports you to the lobby spawn\n
+                                    /HubPE - Shows a list of HubPE commands ");
+                                  if($args[1] == "setlobby"){
+                                  	if($event->getPlayer()->hasPermission("HubPE.setlobby")){
+                                  	$x = $sender->getX();
+		                	$y = $sender->gety();
+                                        $z = $sender->getZ();
+                                        $this->config->set("LobbyX", "$x");
+                                        $this->config->set("LobbyY", "$x");
+                                        $this->config->set("LobbyZ", "$x");
+                                  	$sender->sendMessage("Lobby spawn has been set to your position");
+                                  if($args[0] == "lobby"){
+                                  	$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+                                  }
+                                  }
+                                
+		}
+}
