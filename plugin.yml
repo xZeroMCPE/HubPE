@@ -4,3 +4,9 @@ api: 1.0.0
 main: Andre\HubPE
 author: AndreTheGamer (Andre)
 description: A cool hub plugin (got almost everything a hub needs!)
+
+commands:
+ HubPE:
+  description: "Display HubPE commands list"
+  usage: ""
+  permission: HubPE.*
