@@ -55,6 +55,7 @@ class Core extends PluginBase implements Listener {
             $player = $e->getPlayer();
             $Join_Message = this->congih-.get("Join_Message");
             $player->sendMessage("$Join_Message");
+            $player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
      }
      public function onChat(PlayerChatEvent $event)
 		{
