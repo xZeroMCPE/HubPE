@@ -21,6 +21,10 @@ No_Permission: You don't have that permission to use/do that.
 Server_Full: This server is full!
 Join_Message: Welcome to my server
 
+LobbyX:
+LobbyY:
+LobbyZ:
+
 Disable_Commands:
  - /version
  - /plugins
