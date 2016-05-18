@@ -31,3 +31,4 @@ HubPE is the best Hub plugin available for MCPE Servers (Pocketmins,ImagicalMine
 - HubPE.drop
 - HubPE.pickup
 - HubPE.full
+- HubPE.setlobby
