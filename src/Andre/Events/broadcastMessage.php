@@ -12,8 +12,10 @@ class broadcastMessage extends PluginTask{
      }
      public function onRun($currentTick){
          // $broadcast = $this->plugin->this->broadcast;
-         // $message = $broadcast->get("Messages");                    *removed for not*
+         // $message = $broadcast->get("Messages");                    *removed for now*
         //  $messages = $message[array_rand($message)];
-          Server::getInstance()->broadcastMessage("Default message");
+        $message = $owner->this->broadcast->get("Messages");
+        $randommessage = array_rand($message); 
+          Server::getInstance()->broadcastMessage("$randommessage");
      }
 }
