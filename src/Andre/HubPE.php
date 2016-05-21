@@ -20,6 +20,8 @@ use pocketmine\level\Position;
 use pocketmine\utils\Config;
 
 class HubPE extends PluginBase implements Listener {
+	public $config;
+	public $broadcast;
      public function onEnable(){
             $this->getServer()->getPluginManager()->registerEvents($this,$this);
             $this->config = (new Config($this->getDataFolder()."config.yml", Config::YAML))->getAll();
