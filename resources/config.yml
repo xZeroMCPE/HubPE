@@ -19,8 +19,8 @@ No_Permission: You don't have that permission to use/do that.
 ## Join Message: the messag ethat will eb sent to the player that joins the server.
 #----=
 
-Server_Full: This server is full!
-Join_Message: Welcome to my server
+Server_Full: "This server is full!"
+Join_Message: "Welcome to my server"
 
 LobbyX:
 LobbyY:
