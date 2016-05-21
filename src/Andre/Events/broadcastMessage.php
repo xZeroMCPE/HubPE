@@ -14,8 +14,8 @@ class broadcastMessage extends PluginTask{
          // $broadcast = $this->plugin->this->broadcast;
          // $message = $broadcast->get("Messages");                    *removed for now*
         //  $messages = $message[array_rand($message)];
-        $message = $owner->this->broadcast->get("Messages");
-        $randommessage = array_rand($message); 
+        $messages = $this->plugin->broadcast->get("Messages");
+        $randommessage = $messages[array_rand($messages)]; 
           Server::getInstance()->broadcastMessage("$randommessage");
      }
 }
