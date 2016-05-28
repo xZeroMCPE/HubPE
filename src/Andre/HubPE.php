@@ -71,10 +71,12 @@ class HubPE extends PluginBase implements Listener {
      public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
         switch ($command){
             case 'HubPE':
-		$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE - Shows a list of HubPE commands ");
-                             if($args[0] == "HubPE" && $args[1] == "setlobby"){
+            	if(empty($args[0])){
+			$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE - Shows a list of HubPE commands ");
+            	} else {
+                             if($args[0] == "setlobby"){
                              $x = $sender->getX();
-		                	 $y = $sender->gety();
+		             $y = $sender->gety();
                              $z = $sender->getZ();
                              $this->config->set("LobbyX", "$x");
                              $this->config->set("LobbyY", "$x");
@@ -83,7 +85,18 @@ class HubPE extends PluginBase implements Listener {
                               if($args[0] == "lobby"){
                              	$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
 							  }
+							 } elseif($args[0] == "fly"){
+							 	if($sender->hasPermission("HubPE.fly")){
+							 		if(isset($this->flight[$sender->getName()])){
+							 			$sender->setAllowFlight(false);
+							 		} else {
+							 			$sender->setAllowFlight(true);
+							 		}
+							 	}
+							 } else {
+							 	$sender->sendMessage("Missing Parameter(s)");
 							 }
+            	}
 							 }
 							 
 		}
