@@ -8,7 +8,8 @@ description: A cool hub plugin (got almost everything a hub needs!)
 commands:
  HubPE:
   description: "Display HubPE commands list"
-
+ lobby:
+  description: "Get back to lobby"
 permissions:
  HubPE.break:
   description: "Permission to break blocks"
