@@ -23,6 +23,7 @@ class HubPE extends PluginBase implements Listener {
 	public $config;
 	public $broadcast;
 	public $flight = [];
+	public $vanish = [];
     public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this,$this);
 		$this->saveResource("BroadcastMessage.yml");
