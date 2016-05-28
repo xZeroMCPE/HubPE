@@ -141,3 +141,4 @@ class HubPE extends PluginBase implements Listener {
 			break;
 		}
 	}
+}
