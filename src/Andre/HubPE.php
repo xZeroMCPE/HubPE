@@ -70,7 +70,11 @@ class HubPE extends PluginBase implements Listener {
 		switch ($command){
 			case 'HubPE':
 			if(empty($args[0])){
-				$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE - Shows a list of HubPE commands ");
+				$sender->sendMessage("
+				/HubPE setlobby - Sets the main world spawn\n
+				/HubPE fly - Ability to fly in survival\n
+				/HubPE vanish - Ability to be visible/invisible\n
+				/HubPE - Shows a list of HubPE commands ");
 			} else {
 				if($args[0] == "setlobby"){
 					if($sender instanceof Player){
@@ -81,13 +85,6 @@ class HubPE extends PluginBase implements Listener {
 						$this->config->set("LobbyY", "$x");
 						$this->config->set("LobbyZ", "$x");
 						$sender->sendMessage("Lobby spawn has been set to your position");
-					} else {
-						$sender->sendMessage("Run this command in game");
-					}
-				}
-				if($args[0] == "lobby"){
-					if($sender instanceof Player){
-						$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
 					} else {
 						$sender->sendMessage("Run this command in game");
 					}
@@ -108,9 +105,38 @@ class HubPE extends PluginBase implements Listener {
 					} else {
 						$sender->sendMessage("Run this command in game");
 					}
-				} else {
+				}
+				if($args[0] == "vanish"){
+					if($sender instanceof Player){
+						if($sender->hasPermission("HubPE.vanish")){
+							if(isset($this->vanish[$sender->getName()])){
+								foreach($this->getServer()->getOnlinePlayers() as $p){
+									$p->showPlayer($sender);
+									unset($this->vanish[$sender->getName()]);
+									$sender->sendMessage("You are now visible");
+								}
+							} else {
+								foreach($this->getServer()->getOnlinePlayers() as $p){
+									$p->hidePlayer($sender);
+									$this->vanish[$sender->getName()] = $sender;
+									$sender->sendMessage("You are now invisible");
+								}
+							}
+						}
+					} else {
+						$sender->sendMessage("Run this command in game");
+					}
+				}else {
 					$sender->sendMessage("Missing Parameter(s)");
 				}
 			}
+			break;
+			case 'lobby':
+			if($sender instanceof Player){
+				$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+			} else {
+				$sender->sendMessage("Run this command in game");
+			}
+			break;
 		}
 	}
