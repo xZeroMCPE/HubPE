@@ -8,5 +8,18 @@ description: A cool hub plugin (got almost everything a hub needs!)
 commands:
  HubPE:
   description: "Display HubPE commands list"
-  usage: ""
-  permission: HubPE.*
+
+permissions:
+ HubPE.break:
+  description: "Permission to break blocks"
+  default: op
+ HubPE.place:
+  description: "Permission to place blocks"
+  default: op
+ HubPE.fly:
+  description: "Permission to fly in survival"
+ HubPE.vanish:
+  description: "Permission to be visible/invisible"
+ HubPE.setlobby:
+  description: "Permission to setlobby"
+  default: op
