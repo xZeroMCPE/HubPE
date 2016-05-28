@@ -87,6 +87,8 @@ class HubPE extends PluginBase implements Listener {
 							$this->config->set("LobbyY", "$x");
 							$this->config->set("LobbyZ", "$x");
 							$sender->sendMessage("Lobby spawn has been set to your position");
+						} else {
+							$sender->sendMessage("§cYou don't have permission to use this command");
 						}
 					} else {
 						$sender->sendMessage("Run this command in game");
@@ -103,6 +105,8 @@ class HubPE extends PluginBase implements Listener {
 								$sender->sendMessage("You have enabled flight mode");
 								$this->flight[$sender->getName()] = $sender->getName();
 							}
+						} else {
+							$sender->sendMessage("§cYou don't have permission to use this command");
 						}
 					} else {
 						$sender->sendMessage("Run this command in game");
@@ -123,6 +127,8 @@ class HubPE extends PluginBase implements Listener {
 									$sender->sendMessage("You are now invisible");
 								}
 							}
+						} else {
+							$sender->sendMessage("§cYou don't have permission to use this command");
 						}
 					} else {
 						$sender->sendMessage("Run this command in game");
