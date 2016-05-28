@@ -79,18 +79,19 @@ class HubPE extends PluginBase implements Listener {
 			} else {
 				if($args[0] == "setlobby"){
 					if($sender instanceof Player){
-						$x = $sender->getX();
-						$y = $sender->gety();
-						$z = $sender->getZ();
-						$this->config->set("LobbyX", "$x");
-						$this->config->set("LobbyY", "$x");
-						$this->config->set("LobbyZ", "$x");
-						$sender->sendMessage("Lobby spawn has been set to your position");
+						if($sender->hasPermission("HubPE.setlobby")){
+							$x = $sender->getX();
+							$y = $sender->gety();
+							$z = $sender->getZ();
+							$this->config->set("LobbyX", "$x");
+							$this->config->set("LobbyY", "$x");
+							$this->config->set("LobbyZ", "$x");
+							$sender->sendMessage("Lobby spawn has been set to your position");
+						}
 					} else {
 						$sender->sendMessage("Run this command in game");
 					}
-				}
-				if($args[0] == "fly"){
+				}elseif($args[0] == "fly"){
 					if($sender instanceof Player){
 						if($sender->hasPermission("HubPE.fly")){
 							if(isset($this->flight[$sender->getName()])){
@@ -106,8 +107,7 @@ class HubPE extends PluginBase implements Listener {
 					} else {
 						$sender->sendMessage("Run this command in game");
 					}
-				}
-				if($args[0] == "vanish"){
+				}elseif($args[0] == "vanish"){
 					if($sender instanceof Player){
 						if($sender->hasPermission("HubPE.vanish")){
 							if(isset($this->vanish[$sender->getName()])){
@@ -127,7 +127,7 @@ class HubPE extends PluginBase implements Listener {
 					} else {
 						$sender->sendMessage("Run this command in game");
 					}
-				}else {
+				} else {
 					$sender->sendMessage("Missing Parameter(s)");
 				}
 			}
