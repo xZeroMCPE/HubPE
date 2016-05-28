@@ -86,6 +86,8 @@ class HubPE extends PluginBase implements Listener {
                               if($args[0] == "lobby"){
                              	$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
 							  }
+                             	} else {
+                             		$sender->sendMessage("Run this command in game");
                              	}
 							 } elseif($args[0] == "fly"){
 							 	if($sender instanceof Player){
@@ -96,7 +98,9 @@ class HubPE extends PluginBase implements Listener {
 							 			$sender->setAllowFlight(true);
 							 		}
 							 	}
-							 	}
+							 	}else {
+                             		$sender->sendMessage("Run this command in game");
+                             	}
 							 } else {
 							 	$sender->sendMessage("Missing Parameter(s)");
 							 }
