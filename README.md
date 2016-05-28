@@ -1,5 +1,3 @@
-# HubPE
-
 ![Alt text](https://github.com/AndreTheGamer/HubPE/blob/master/images/HubPE_Logo.png "HubPE")
 
 A cool hub plugin (got almost everything a hub needs!) (For PocketMine,ImagicalMine..ect))
