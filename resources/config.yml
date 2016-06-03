@@ -34,6 +34,6 @@ Disable_Commands_Message: You are not allowed to use that commands.
 
 
 #----=
-## Server gadgets! (The items will be added to there inventory onJoin). Currently in beta :)
+## Server gadgets! (Use the Gadgest.yml instead
 #----=
 ---
