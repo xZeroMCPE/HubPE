@@ -71,7 +71,11 @@ class HubPE extends PluginBase implements Listener {
 		switch ($command){
 			case 'HubPE':
 			if(empty($args[0])){
-				$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE fly - Ability to fly in survival\n/HubPE vanish - Ability to be visible/invisible\n/HubPE - Shows a list of HubPE commands ");
+				$sender->sendMessage("
+				/HubPE setlobby - Sets the main world spawn\n
+				/HubPE fly - Ability to fly in survival\n
+				/HubPE vanish - Ability to be visible/invisible\n
+				/HubPE - Shows a list of HubPE commands ");
 			} else {
 				if($args[0] == "setlobby"){
 					if($sender instanceof Player){
@@ -107,7 +111,7 @@ class HubPE extends PluginBase implements Listener {
 					} else {
 						$sender->sendMessage("Run this command in game");
 					}
-				}elseif($args[0] == "vanish"){
+				}elseif($args[0] == "unvanish"){
 					if($sender instanceof Player){
 						if($sender->hasPermission("HubPE.vanish")){
 							if(isset($this->vanish[$sender->getName()])){
@@ -116,7 +120,17 @@ class HubPE extends PluginBase implements Listener {
 									unset($this->vanish[$sender->getName()]);
 									$sender->sendMessage("You are now visible");
 								}
-							} else {
+							}
+						} else {
+							$sender->sendMessage("§cYou don't have permission to use this command");
+						}
+					} else {
+						$sender->sendMessage("Run this command in game");
+					}
+				}elseif($args[0] == "vanish"){
+					if($sender instanceof Player){
+						if($sender->hasPermission("HubPE.vanish")){
+							if(isset($this->vanish[$sender->getName()])){
 								foreach($this->getServer()->getOnlinePlayers() as $p){
 									$p->hidePlayer($sender);
 									$this->vanish[$sender->getName()] = $sender;
@@ -139,6 +153,32 @@ class HubPE extends PluginBase implements Listener {
 				$sender->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
 			} else {
 				$sender->sendMessage("Run this command in game");
+			}
+			break;
+			case 'vanish':
+			if($sender instanceof Player){
+				if($sender->hasPermission("HubPE.vanish")){
+					foreach($this->getServer()->getOnlinePlayers() as $p){
+						$p->hidePlayer($sender);
+						$this->vanish[$sender->getName()] = $sender;
+						$sender->sendMessage("You are now invisible");
+					}
+				} else {
+					$sender->sendMessage("§cYou don't have permission to use this command");
+				}
+			} else {
+				$sender->sendMessage("Run this command in game");
+			}
+			break;
+			case 'unvanish':
+			if(isset($this->vanish[$sender->getName()])){
+				foreach($this->getServer()->getOnlinePlayers() as $p){
+					$p->showPlayer($sender);
+					unset($this->vanish[$sender->getName()]);
+					$sender->sendMessage("You are now visible");
+				}
+			} else {
+				$sender->sendMessage("You are not invisible. Do /vanish");
 			}
 			break;
 		}
