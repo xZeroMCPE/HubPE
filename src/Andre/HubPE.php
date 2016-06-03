@@ -26,10 +26,10 @@ class HubPE extends PluginBase implements Listener {
 	public $vanish = [];
     public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this,$this);
-		$this->saveResource("Messages.yml");
+		$this->saveResource("BroadcastMessage.yml");
 		$this->saveDefaultConfig();
 		$this->config = (new Config($this->getDataFolder()."config.yml", Config::YAML));
-		$this->broadcast = (new Config($this->getDataFolder()."Messages.yml", Config::YAML));
+		$this->broadcast = (new Config($this->getDataFolder()."BroadcastMessage.yml", Config::YAML));
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new Events\broadcastMessage($this), 400);
 		$this->getLogger()->info("HubPE has been enabled!");
 	}
