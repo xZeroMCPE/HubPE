@@ -71,7 +71,7 @@ class HubPE extends PluginBase implements Listener {
 		switch ($command){
 			case 'HubPE':
 			if(empty($args[0])){
-				$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE fly - Ability to fly in survival\n/HubPE vanish - Ability to be visible/invisible\n/HubPE - Shows a list of HubPE commands ");
+				$sender->sendMessage("/HubPE setlobby - Sets the main world spawn\n/HubPE fly - Ability to fly in survival\n/HubPE vanish - Ability to be invisible\n/HubPE unvanish - Ability to be visible\n/HubPE - Shows a list of HubPE commands ");
 			} else {
 				if($args[0] == "setlobby"){
 					if($sender instanceof Player){
