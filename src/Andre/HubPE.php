@@ -58,6 +58,7 @@ class HubPE extends PluginBase implements Listener {
 		$player = $e->getPlayer();
 		$Join_Message = $this->getConfig()->get("Join_Message");
 		$player->sendMessage("$Join_Message");
+		$e->setJoinMessage(""); //Removes join message
 		$player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
 	}
 	public function onChat(PlayerChatEvent $event){
