@@ -63,9 +63,6 @@ class HubPE extends PluginBase implements Listener {
 		$player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
 	}
 	public function onOuit(PlayerQuitEvent $e){
-		$player = $e->getPlayer();
-		$Quit_Message = $this->getConfig()->get("Quit_Message");
-		$player->sendMessage("$Quit_Message");
 		$e->setQuitMessage("");// Removes quit message
 	}
 	public function onChat(PlayerChatEvent $event){
