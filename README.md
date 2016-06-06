@@ -9,7 +9,7 @@ HubPE is the best Hub plugin available for MCPE Servers (Pocketmins,ImagicalMine
 #Features:
 
 - [x] Blocks Join/Quit messages , (And customized it)
-- [ ] VoidTp(When you fall in void it teleports you to the spawn)
+- [x] VoidTp(When you fall in void it teleports you to the spawn)
 - [x] Blocks breaking and placing blocks
 - [ ] Blocks item drop and pickup without permissions
 - [ ] Blocks Rain
