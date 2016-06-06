@@ -72,6 +72,12 @@ class HubPE extends PluginBase implements Listener {
 			$event->setCancelled();
 		}
 	}
+	public function onVoid(PlayerMoveEvent $event){
+		if($event->getTo()->getFloorY() < 2){
+			$player = $event->getPlayer();
+			$player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+		}
+	 }
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
 		switch ($command){
 			case 'HubPE':
