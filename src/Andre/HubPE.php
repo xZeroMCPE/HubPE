@@ -4,6 +4,7 @@ namespace Andre;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\Player;
@@ -60,6 +61,12 @@ class HubPE extends PluginBase implements Listener {
 		$player->sendMessage("$Join_Message");
 		$e->setJoinMessage(""); //Removes join message
 		$player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+	}
+	public function onOuit(PlayerQuitEvent $e){
+		$player = $e->getPlayer();
+		$Quit_Message = $this->getConfig()->get("Quit_Message");
+		$player->sendMessage("$Quit_Message");
+		$e->setQuitMessage("");// Removes quit message
 	}
 	public function onChat(PlayerChatEvent $event){
 		$message = $event->getMessage();
