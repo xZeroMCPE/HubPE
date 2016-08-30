@@ -12,7 +12,7 @@
 ## Message that"ll be sent to te player after using a command when they don't have the permission.
 #----=
 
-No_Permission: You don't have that permission to use/do that.
+No_Permission: "You don't have that permission to use/do that."
 
 #----=
 ## Server Full message. Only the ones with the right permission can join Full Servers!
@@ -30,8 +30,15 @@ Disable_Commands:
  - /version
  - /plugins
  
-Disable_Commands_Message: You are not allowed to use that commands.
+Disable_Commands_Message: "You are not allowed to use that commands."
 
+##
+#  Default_Join_Message: Setting it as true will display the default player join message!
+#  Default_Quit_Message: Setting it as true will display the default player join message!
+##
+
+Default_Join_Message: "false"
+Default_Quit_Message: "false"
 
 #----=
 ## Server gadgets! (Use the Gadgest.yml instead

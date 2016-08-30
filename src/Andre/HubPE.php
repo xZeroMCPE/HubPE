@@ -32,7 +32,18 @@ class HubPE extends PluginBase implements Listener {
 		$this->config = (new Config($this->getDataFolder()."config.yml", Config::YAML));
 		$this->broadcast = (new Config($this->getDataFolder()."BroadcastMessage.yml", Config::YAML));
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new Events\broadcastMessage($this), 400);
-		$this->getLogger()->info("HubPE has been enabled!");
+		$this->getLogger()->info("
+
+		
+  _    _       _     _____  ______ 
+ | |  | |     | |   |  __ \|  ____|
+ | |__| |_   _| |__ | |__) | |__   
+ |  __  | | | | '_ \|  ___/|  __|  
+ | |  | | |_| | |_) | |    | |____ 
+ |_|  |_|\__,_|_.__/|_|    |______|
+      ~~ Has been enabled ~~~                                  
+                                   
+                                   ");
 	}
 	public function onBlockBreak(BlockBreakEvent $event){  
 		$player = $event->getPlayer();
@@ -57,13 +68,16 @@ class HubPE extends PluginBase implements Listener {
 	}
 	public function onJoin(PlayerJoinEvent $e){
 		$player = $e->getPlayer();
-		$Join_Message = $this->getConfig()->get("Join_Message");
-		$player->sendMessage("$Join_Message");
-		$e->setJoinMessage(""); //Removes join message
-		$player->teleport($this->getServer()->getDefaultLevel()->getSafeSpawn());
+				sendMessage();
+		if($this->getConfig()->get("Default_Join_Message") == false){
+			$e->setJoinMessage(""); //Removes join message
+		}
 	}
 	public function onOuit(PlayerQuitEvent $e){
-		$e->setQuitMessage("");// Removes quit message
+						sendMessage();
+		if($this->getConfig()->get("Default_Join_Message") == false){
+			$e->getQuitMessage("");
+	}
 	}
 	public function onChat(PlayerChatEvent $event){
 		$message = $event->getMessage();
@@ -190,4 +204,13 @@ class HubPE extends PluginBase implements Listener {
 			break;
 		}
 	}
+	
+	/*
+	  Sending a message when a player joins the server (More stable)
+	*/
+   function sendMessage($player){
+	  
+	  $Join_Message = $this->getConfig()->get("Join_Message");
+		$player->sendMessage("$Join_Message");
+  }
 }
